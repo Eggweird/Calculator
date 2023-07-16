@@ -2,10 +2,13 @@ const displayBox = document.querySelector(".display-box");
 const digitButton = document.querySelectorAll("#digit-button");
 const clearButton = document.querySelector("#clear-button");
 const allClearButton = document.querySelector("#all-clear-button");
-const operatorButton = document.querySelector("#operator");
+const operatorButton = document.querySelectorAll("#operator");
 const equalButton = document.querySelector("equal-button");
 const decimalButton = document.querySelector("decimal-button"); //could add this into the digitButton
 
+let firstNumber = "";
+let secondNumber = "";
+let operator = "";
 //let memory = [];
 
 //Event listener for digit buttons and call display
@@ -16,6 +19,19 @@ digitButton.forEach((number) =>
   })
 );
 
+operatorButton.forEach((operator) =>
+  operator.addEventListener("click", () => {
+    if (operator.textContent === "+") {
+      display(operator.textContent);
+    } else if (operator.textContent === "-") {
+      display(operator.textContent);
+    } else if (operator.textContent === "/") {
+      display(operator.textContent);
+    } else if (operator.textContent === "*") {
+      display(operator.textContent);
+    }
+  })
+);
 //display function to display in display box of calculator
 function display(val) {
   displayBox.textContent += val;
@@ -45,7 +61,7 @@ const divide = function (a, b) {
  *  will then be taken into a switch statement. That will then utilizes the
  *  math functions created and return the value after the math has been completed.
  */
-operate = (operator, a, b) => {
+function operate(operator, a, b) {
   switch (operator) {
     case "+":
       return add(a, b);
@@ -61,4 +77,4 @@ operate = (operator, a, b) => {
       }
     default:
   }
-};
+}
