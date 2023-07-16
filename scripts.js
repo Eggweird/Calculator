@@ -3,12 +3,13 @@ const digitButton = document.querySelectorAll("#digit-button");
 const clearButton = document.querySelector("#clear-button");
 const allClearButton = document.querySelector("#all-clear-button");
 const operatorButton = document.querySelectorAll("#operator");
-const equalButton = document.querySelector("equal-button");
-const decimalButton = document.querySelector("decimal-button"); //could add this into the digitButton
+const equalButton = document.querySelector("#equal-button");
+const decimalButton = document.querySelector("#decimal-button"); //could add this into the digitButton
 
 let firstNumber = "";
 let secondNumber = "";
-let operator = "";
+let operatorValue = "";
+let total = "";
 //let memory = [];
 
 //Event listener for digit buttons and call display
@@ -19,19 +20,60 @@ digitButton.forEach((number) =>
   })
 );
 
+//TODO: switch to switch statement later when it works
 operatorButton.forEach((operator) =>
   operator.addEventListener("click", () => {
     if (operator.textContent === "+") {
-      display(operator.textContent);
+      firstNumber = parseFloat(displayBox.textContent);
+      operatorValue = operator.value;
+      resetDisplay();
+      console.log(firstNumber);
+      console.log(operatorValue);
     } else if (operator.textContent === "-") {
-      display(operator.textContent);
+      firstNumber = parseFloat(displayBox.textContent);
+      operatorValue = operator.value;
+      resetDisplay();
+      console.log(firstNumber);
+      console.log(operatorValue);
     } else if (operator.textContent === "/") {
-      display(operator.textContent);
+      firstNumber = parseFloat(displayBox.textContent);
+      operatorValue = operator.value;
+      resetDisplay();
+      console.log(firstNumber);
+      console.log(operatorValue);
     } else if (operator.textContent === "*") {
-      display(operator.textContent);
+      firstNumber = parseFloat(displayBox.textContent);
+      operatorValue = operator.value;
+      resetDisplay();
+      console.log(firstNumber);
+      console.log(operatorValue);
     }
   })
 );
+
+allClearButton.addEventListener("click", () => {
+  reset();
+});
+
+equalButton.addEventListener("click", () => {
+  secondNumber = parseFloat(displayBox.textContent);
+  resetDisplay();
+  console.log(secondNumber);
+  displayBox.textContent = operate(operatorValue, firstNumber, secondNumber);
+});
+
+function reset() {
+  firstNumber = "";
+  secondNumber = "";
+  operatorValue = "";
+  total = "";
+  displayBox.textContent = "";
+}
+
+function resetDisplay() {
+  displayBox.textContent = "";
+}
+
 //display function to display in display box of calculator
 function display(val) {
   displayBox.textContent += val;
