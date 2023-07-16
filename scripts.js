@@ -21,40 +21,38 @@ digitButton.forEach((number) =>
 );
 
 //TODO: switch to switch statement later when it works
+//Operator button will store firstNumber with the current displayed text on the display box
+//depending on which operator was clicked it will store the operatorValue with that clicked operator
 operatorButton.forEach((operator) =>
   operator.addEventListener("click", () => {
     if (operator.textContent === "+") {
       firstNumber = parseFloat(displayBox.textContent);
       operatorValue = operator.value;
       resetDisplay();
-      console.log(firstNumber);
-      console.log(operatorValue);
     } else if (operator.textContent === "-") {
       firstNumber = parseFloat(displayBox.textContent);
       operatorValue = operator.value;
       resetDisplay();
-      console.log(firstNumber);
-      console.log(operatorValue);
     } else if (operator.textContent === "/") {
       firstNumber = parseFloat(displayBox.textContent);
       operatorValue = operator.value;
       resetDisplay();
-      console.log(firstNumber);
-      console.log(operatorValue);
     } else if (operator.textContent === "*") {
       firstNumber = parseFloat(displayBox.textContent);
       operatorValue = operator.value;
       resetDisplay();
-      console.log(firstNumber);
-      console.log(operatorValue);
     }
   })
 );
 
+//This button will when clicked call the reset function
 allClearButton.addEventListener("click", () => {
   reset();
 });
 
+//This button will when pressed store secondNumber with the current displayed value in the display box
+//will call the operate function with the correct variables. Displaying the fully calculated number onto
+//the display box
 equalButton.addEventListener("click", () => {
   secondNumber = parseFloat(displayBox.textContent);
   resetDisplay();
@@ -62,6 +60,7 @@ equalButton.addEventListener("click", () => {
   displayBox.textContent = operate(operatorValue, firstNumber, secondNumber);
 });
 
+//reset will reset everything in the calculator bringing it to square one
 function reset() {
   firstNumber = "";
   secondNumber = "";
@@ -70,6 +69,7 @@ function reset() {
   displayBox.textContent = "";
 }
 
+//resetDisplay will just erase the numbers within the display box
 function resetDisplay() {
   displayBox.textContent = "";
 }
@@ -97,12 +97,10 @@ const divide = function (a, b) {
   return a / b;
 };
 
-/**
- * Operate function:
- *  This function will take an operator and 2 nums. The entered operator
- *  will then be taken into a switch statement. That will then utilizes the
- *  math functions created and return the value after the math has been completed.
- */
+// This function will take an operator and 2 nums. The entered operator
+// will then be taken into a switch statement. That will then utilizes the
+// math functions created and return the value after the math has been completed.
+
 function operate(operator, a, b) {
   switch (operator) {
     case "+":
